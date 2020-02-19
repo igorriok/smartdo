@@ -15,6 +15,8 @@ import CloseIcon from "@material-ui/core/SvgIcon/SvgIcon";
 import Snackbar from "@material-ui/core/Snackbar";
 import TaskList from "./requests/TaskList";
 import TaskDetails from "./requests/TaskDetails";
+import * as firebase from "firebase/app";
+import "firebase/auth";
 
 const drawerWidth = 240;
 
@@ -61,6 +63,8 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
+
+
 const routes = [
   {
     path: "/",
@@ -85,6 +89,12 @@ const App = (props) => {
   const classes = useStyles();
   const theme = useTheme();
   const DEV_MODE = process.env.NODE_ENV !== "production" ? '{dev mode}' : '';
+
+  const firebaseConfig = {
+    // ...
+  };
+
+  firebase.initializeApp(firebaseConfig);
 
   const reducer = (state, action) => {
     switch (action.type) {
